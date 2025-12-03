@@ -5,7 +5,7 @@ interface Range {
   end: number;
 }
 
-const parseInput = (rawInput: string): Range[] => 
+const parseInput = (rawInput: string): Range[] =>
   rawInput.split(",").map((range) => {
     const [start, end] = range.split("-").map(Number);
     return { start, end };
@@ -15,9 +15,9 @@ const part1 = (rawInput: string) => {
   const idRanges = parseInput(rawInput);
   let sum = 0;
   idRanges.forEach((range) => {
-    for (let i = range.start; i <= range.end; i++){
+    for (let i = range.start; i <= range.end; i++) {
       const istr = i.toString();
-      if (istr.slice(0, istr.length/2) == istr.slice(istr.length/2)){
+      if (istr.slice(0, istr.length / 2) == istr.slice(istr.length / 2)) {
         sum += i;
       }
     }
@@ -29,12 +29,12 @@ const part2 = (rawInput: string) => {
   const idRanges = parseInput(rawInput);
   let sum = 0;
   idRanges.forEach((range) => {
-    for (let i = range.start; i <= range.end; i++){
+    for (let i = range.start; i <= range.end; i++) {
       const istr = i.toString();
       const len = istr.length;
-      for (let j = 1; j <= len / 2; j++){
+      for (let j = 1; j <= len / 2; j++) {
         if (len % j !== 0) continue;
-        if (istr.split(istr.slice(0,j)).join("") == ""){
+        if (istr.split(istr.slice(0, j)).join("") == "") {
           sum += i;
           break;
         }
