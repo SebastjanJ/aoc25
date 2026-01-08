@@ -27,7 +27,7 @@ const part2 = (rawInput: string) => {
   let sum = 0;
   let nums = [];
 
-  outerlopp: for (let i = input[0].length - 1; i >= 0; i--) {
+  outerloop: for (let i = input[0].length - 1; i >= 0; i--) {
     let currnum = "";
     for (let j = 0; j < input.length; j++) {
       if (Number(input[j][i])) {
@@ -36,12 +36,12 @@ const part2 = (rawInput: string) => {
         nums.push(Number(currnum));
         sum += nums.reduce((a, b) => a * b, 1);
         nums = [];
-        continue outerlopp;
+        continue outerloop;
       } else if (input[j][i] == "+") {
         nums.push(Number(currnum));
         sum += nums.reduce((a, b) => a + b, 0);
         nums = [];
-        continue outerlopp;
+        continue outerloop;
       }
     }
     if (currnum != "") {
